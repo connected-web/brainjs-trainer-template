@@ -1,6 +1,8 @@
 import brain from 'brain.js'
 import fs from 'fs'
 
+import WordEncoder from './src/WordEncoder.js'
+
 const config = {
   binaryThresh: 0.5,
   hiddenLayers: [3], // array of ints for the sizes of the hidden layers in the network
@@ -15,6 +17,15 @@ const net = new brain.NeuralNetwork(config)
 
 const rawTrainingData = JSON.parse(fs.readFileSync('./training-data/inputs-outputs.json', 'utf8'))
 console.log('Loaded training data:', rawTrainingData.length, 'records')
+
+console.time('Training encoder')
+console.time('Trained encoder')
+const encoder = new WordEncoder()
+encoder.train(rawTrainingData.map(item => item.input))
+console.timeEnd('Trained encoder')
+console.log('Encoded dictionary:', encoder.dictionary)
+console.log('Encoded characters:', encoder.chars)
+console.log('Encoded pairs:', encoder.pairs)
 
 console.log('🚅 Training network')
 console.time('🚅 Trained network')
