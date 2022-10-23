@@ -3,47 +3,91 @@ import fs from 'fs'
 
 import WordEncoder from './src/WordEncoder.js'
 
-const config = {
-  binaryThresh: 0.5,
-  hiddenLayers: [3], // array of ints for the sizes of the hidden layers in the network
-  activation: 'sigmoid', // supported activation types: ['sigmoid', 'relu', 'leaky-relu', 'tanh'],
-  leakyReluAlpha: 0.01, // supported for activation type 'leaky-relu',
-  log: true,
-  logPeriod: 100
+async function createContext ({ steps }) {
+  const netConfig = {
+    binaryThresh: 0.5,
+    hiddenLayers: [3], // array of ints for the sizes of the hidden layers in the network
+    activation: 'sigmoid', // supported activation types: ['sigmoid', 'relu', 'leaky-relu', 'tanh'],
+    leakyReluAlpha: 0.01, // supported for activation type 'leaky-relu',
+    log: true,
+    logPeriod: 100
+  }
+  const net = new brain.NeuralNetwork(netConfig)
+  return { net, netConfig }
 }
 
-// create a simple feed forward neural network with backpropagation
-const net = new brain.NeuralNetwork(config)
+async function loadTrainingData () {
+  const rawTrainingData = JSON.parse(fs.readFileSync('./training-data/inputs-outputs.json', 'utf8'))
+  console.log('Loaded training data:', rawTrainingData.length, 'records')
+  return { rawTrainingData }
+}
 
-const rawTrainingData = JSON.parse(fs.readFileSync('./training-data/inputs-outputs.json', 'utf8'))
-console.log('Loaded training data:', rawTrainingData.length, 'records')
+async function trainEncoder ({ rawTrainingData }) {
+  const encoder = new WordEncoder()
+  encoder.train(rawTrainingData.map(item => item.input))
+  console.log('Encoded dictionary:', encoder.dictionary)
+  console.log('Encoded characters:', encoder.chars)
+  console.log('Encoded pairs:', encoder.pairs)
+  return { encoder }
+}
 
-console.time('Training encoder')
-console.time('Trained encoder')
-const encoder = new WordEncoder()
-encoder.train(rawTrainingData.map(item => item.input))
-console.timeEnd('Trained encoder')
-console.log('Encoded dictionary:', encoder.dictionary)
-console.log('Encoded characters:', encoder.chars)
-console.log('Encoded pairs:', encoder.pairs)
+async function encodeTrainingData ({ rawTrainingData, encoder }) {
+  const encodedTrainingData = rawTrainingData.map(item => {
+    const encodedInput = encoder.encode(item.input)
+    return {
+      input: encodedInput,
+      output: item.output
+    }
+  })
+  return { encodedTrainingData }
+}
 
-console.log('🚅 Training network')
-console.time('🚅 Trained network')
-const trainingResults = net.train(rawTrainingData)
-console.timeEnd('🚅 Trained network')
-console.log('Training results:', trainingResults)
+async function trainNetwork ({ net, encodedTrainingData }) {
+  const trainingResults = net.train(encodedTrainingData)
+  console.log('Training results:', trainingResults)
+  return { trainingResults }
+}
 
-console.log('💽 Saving trained model')
-console.time('💽 Saved trained model')
-const trainedNetwork = net.toJSON()
-const modelPath = './models/trained-model.json'
-fs.writeFileSync(modelPath, JSON.stringify({ trainedNetwork }, null, 2))
-console.timeEnd('💽 Saved trained model')
-console.log('Saved trained model:', modelPath)
+async function saveTrainedModel ({ net }) {
+  const trainedNetwork = net.toJSON()
+  const modelPath = './models/trained-model.json'
+  fs.writeFileSync(modelPath, JSON.stringify({ trainedNetwork }, null, 2))
+}
 
-console.log('🏃 Testing model with sample input')
-console.time('🏃 Tested model with sample input')
-const testInput = 'red'
-const output = net.run(testInput)
-console.timeEnd('🏃 Tested model with sample input')
-console.log('Trained output:', { testInput, output })
+async function testTrainedModel ({ net, encoder }) {
+  const testInput = 'red'
+  const encodedInput = encoder.encode(testInput)
+  const output = net.run(testInput)
+  console.log('Trained output:', { testInput, encodedInput, output })
+}
+
+const steps = {
+  '✨ Create context': createContext,
+  '💽 Load training data': loadTrainingData,
+  '🚅 Train encoder': trainEncoder,
+  '🗂️ Encode training data': encodeTrainingData,
+  '🚅 Train network': trainNetwork,
+  '💽 Save trained model': saveTrainedModel,
+  '🏃 Test trained model': testTrainedModel
+}
+
+async function run () {
+  const context = { steps }
+  const work = Object.entries(steps).map(([stepName, stepFn], index) => {
+    return async () => {
+      console.log('Step', (index + 1), ':', stepName)
+      console.time(stepName)
+      const newContext = await stepFn(context)
+      console.timeEnd(stepName)
+      Object.assign(context, newContext)
+      console.log('')
+    }
+  })
+
+  while (work.length > 0) {
+    const next = work.shift()
+    await next()
+  }
+}
+
+run()

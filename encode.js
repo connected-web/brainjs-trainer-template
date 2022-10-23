@@ -1,5 +1,4 @@
 import fs from 'fs'
-import { encode } from 'punycode'
 
 import WordEncoder from './src/WordEncoder.js'
 
