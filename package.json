@@ -5,6 +5,7 @@
   "description": "A template project for training neural networks and hosting the result to github pages",
   "main": "index.js",
   "scripts": {
+    "start": "cd website && npm run dev",
     "train": "node train.js",
     "test": "standard",
     "lint": "standard --fix"

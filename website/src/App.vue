@@ -1,15 +1,15 @@
 <script>
 import Quickstart from './components/Quickstart.vue'
-import UABrain from './components/UABrain.vue'
+import NeuralNetwork from './components/NeuralNetwork.vue'
 
-import UABrainTile from './components/UABrainTile.vue'
+import BrainJSTrainerTile from './components/BrainJSTrainerTile.vue'
 import BrainJSTile from './components/BrainJSTile.vue'
 
 export default {
-  components: { Quickstart, UABrain, UABrainTile, BrainJSTile },
+  components: { Quickstart, NeuralNetwork, BrainJSTrainerTile, BrainJSTile },
   data() {
     return {
-      userAgent: navigator.userAgent
+      userInput: 'yellow'
     }
   }
 }
@@ -20,11 +20,11 @@ export default {
   <div>
     <div class="title-icons">
       <BrainJSTile />
-      <UABrainTile />
+      <BrainJSTrainerTile />
     </div>
     <Quickstart title="User-Agent Brain" />
-    <input v-model="userAgent" class="userAgentInput" />
-    <UABrain :user-agent="userAgent" />
+    <input v-model="userInput" class="userAgentInput" />
+    <NeuralNetwork :user-input="userInput" />
   </div>
 </template>
 

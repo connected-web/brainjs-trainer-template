@@ -42,6 +42,7 @@ Prerequisites:
 - `NodeJS LTS >= 16`, and latest version of `npm`
 - `Python 2.7`
   - e.g.: on Ubuntu `sudo apt-get install -y python`
+  - e.g.: on Mac `brew install pyenv`, `pyenv install 2.7.18`
 - Brain.js [system dependencies](https://github.com/BrainJS/brain.js#system-dependencies)
   - e.g.: on Ubuntu `sudo apt-get install -y python build-essential libxi-dev libglu1-mesa-dev libglew-dev pkg-config`
 
