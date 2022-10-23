@@ -1,0 +1,26 @@
+{
+  "name": "brainjs-trainer-template",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "A template project for training neural networks and hosting the result to github pages",
+  "main": "index.js",
+  "scripts": {
+    "train": "node train.js",
+    "test": "standard",
+    "lint": "standard --fix"
+  },
+  "keywords": [],
+  "author": "John Beech",
+  "license": "ISC",
+  "dependencies": {
+    "brain.js": "^2.0.0-beta.16"
+  },
+  "devDependencies": {
+    "standard": "^17.0.0"
+  },
+  "standard": {
+    "ignore": [
+      "website/**/dist/"
+    ]
+  }
+}

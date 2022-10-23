@@ -1,0 +1,33 @@
+name: Update Demo Website
+on: 
+  push:
+    branches:
+      - main
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@master
+
+    - name: Use Node JS LTS
+      uses: actions/setup-node@v2
+      with:
+        node-version: 18.x
+
+    - name: Install Brain.js Dependencies
+      run: sudo apt-get install -y python build-essential libxi-dev libglu1-mesa-dev libglew-dev pkg-config
+
+    - name: Install dependencies
+      run: npm install
+      working-directory: ./website/
+
+    - name: Run build steps
+      run: npm run build -s
+      working-directory: ./website/
+
+    - name: Deploy to gh-pages branch
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: website/dist
