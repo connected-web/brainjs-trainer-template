@@ -9,7 +9,9 @@ Template features include:
 - Parse command `node parse` - test your network our, give it test input, see the output
 - Hosted website - interactively play with the network via a web browser, either locally, or hosted via Github Pages
 
-Visit the [github hosted website](????) for an interactive demo.
+Visit the [github hosted website](https://connected-web.github.io/brainjs-trainer-template/) for an interactive demo.
+
+If this is a new repo created from the template; please go to the repo Settings page, and configure Pages to deploy from the `gh-pages` branch.
 
 ## Project Goals
 
