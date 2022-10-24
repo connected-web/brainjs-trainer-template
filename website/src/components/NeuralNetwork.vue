@@ -1,13 +1,11 @@
 <template>
   <div>
-    <p>
-      <label>User Input:</label>
-      <code>{{ userInput || 'No user-input set' }}</code>
-    </p>
     <div class="left">
-      <label>Outputs:</label>
       <div class="color-bar" :style="color.style">R: {{ color.red }}, G: {{ color.green }}, B: {{ color.blue }}</div>
+      <h3>Outputs:</h3>
       <pre><code>{{ JSON.stringify(outputs, null, 2) }}</code></pre>
+      <h3>Encoded User Input:</h3>
+      <pre><code>{{ JSON.stringify(encodedUserInput, null, 2) }}</code></pre>
     </div>
     <p>
       <label>State:</label>
@@ -32,6 +30,7 @@ export default {
   data() {
     return {
       trainedNetwork: {},
+      encodedUserInput: {},
       outputs: {},
       state: "Unmounted",
     };
@@ -93,6 +92,7 @@ export default {
       console.log("Trained output:", { userInput, outputs });
 
       // Assign values back to vue model to display to user
+      this.encodedUserInput = encodedUserInput;
       this.outputs = outputs;
     },
   },

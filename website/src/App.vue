@@ -9,7 +9,7 @@ export default {
   components: { Quickstart, NeuralNetwork, BrainJSTrainerTile, BrainJSTile },
   data() {
     return {
-      userInput: 'yellow'
+      userInput: ''
     }
   }
 }
@@ -23,7 +23,7 @@ export default {
       <BrainJSTrainerTile />
     </div>
     <Quickstart title="BrainJS Trainer Template" />
-    <input v-model="userInput" class="userAgentInput" />
+    <p><input v-model="userInput" class="userAgentInput" placeholder="Enter colour" /></p>
     <NeuralNetwork :user-input="userInput" />
   </div>
 </template>
