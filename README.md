@@ -28,11 +28,15 @@ Visit the [github hosted website](????) for an interactive demo.
 ### Ideal outputs
 
 Document here what you want the output of your network to be:
+
 ```js
 {
-  red: 1.0,
-  blue: 0.1,
-  green: 0.4
+  input: 'reddish',
+  output: {
+    red: 1.0,
+    blue: 0.1,
+    green: 0.4
+  }
 }
 ```
 
