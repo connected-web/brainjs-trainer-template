@@ -48,10 +48,11 @@ async function trainNetwork ({ net, encodedTrainingData }) {
   return { trainingResults }
 }
 
-async function saveTrainedModel ({ net }) {
+async function saveTrainedModel ({ net, encoder }) {
   const trainedNetwork = net.toJSON()
+  const encoderDictionary = encoder.dictionary
   const modelPath = './models/trained-model.json'
-  fs.writeFileSync(modelPath, JSON.stringify({ trainedNetwork }, null, 2))
+  fs.writeFileSync(modelPath, JSON.stringify({ trainedNetwork, encoderDictionary }, null, 2))
 }
 
 async function testTrainedModel ({ net, encoder }) {

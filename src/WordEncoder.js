@@ -39,7 +39,12 @@ export default class WordEncoder {
   }
 
   rehydrate (dictionary) {
+    if (!Array.isArray(dictionary)) {
+      throw new Error('WordEncoder.prototype.rehydrate expects dictionary as array of words; received: ' + dictionary)
+    }
     this.dictionary = dictionary
+    this.chars = findChars(this.dictionary)
+    this.pairs = findPairs(this.dictionary)
   }
 
   encode (word) {
