@@ -68,7 +68,7 @@ Just be patient...
 
 To train the network, run:
 ```
-node train
+npm run train
 ```
 
 To test the network against existing dataset, run:
@@ -78,7 +78,7 @@ npm run test
 
 To test against a single input string, run:
 ```
-node parse "red"
+node trainer/parse "red"
 ```
 
 ## Libraries

@@ -20,7 +20,7 @@
 import * as brain from "brain.js";
 import axios from "axios";
 
-import WordEncoder from '../../../src/WordEncoder.js'
+import WordEncoder from '../../../trainer/src/WordEncoder.js'
 
 export default {
   props: {

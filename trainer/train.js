@@ -1,7 +1,11 @@
 import brain from 'brain.js'
 import fs from 'fs'
+import path from 'path'
+import { fileURLToPath } from 'url'
 
 import WordEncoder from './src/WordEncoder.js'
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 async function createContext ({ steps }) {
   const netConfig = {
@@ -17,7 +21,8 @@ async function createContext ({ steps }) {
 }
 
 async function loadTrainingData () {
-  const rawTrainingData = JSON.parse(fs.readFileSync('./training-data/inputs-outputs.json', 'utf8'))
+  const inputsAndOutputsPath = path.join(__dirname, './training-data/inputs-outputs.json')
+  const rawTrainingData = JSON.parse(fs.readFileSync(inputsAndOutputsPath, 'utf8'))
   console.log('Loaded training data:', rawTrainingData.length, 'records')
   return { rawTrainingData }
 }
@@ -51,7 +56,7 @@ async function trainNetwork ({ net, encodedTrainingData }) {
 async function saveTrainedModel ({ net, encoder }) {
   const trainedNetwork = net.toJSON()
   const encoderDictionary = encoder.dictionary
-  const modelPath = './models/trained-model.json'
+  const modelPath = path.join(__dirname, './models/trained-model.json')
   fs.writeFileSync(modelPath, JSON.stringify({ trainedNetwork, encoderDictionary }, null, 2))
 }
 

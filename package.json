@@ -5,23 +5,23 @@
   "description": "A template project for training neural networks and hosting the result to github pages",
   "main": "index.js",
   "scripts": {
-    "start": "cd website && npm run dev",
-    "train": "node train.js",
-    "test": "standard",
-    "lint": "standard --fix"
+    "bootstrap": "lerna bootstrap",
+    "start": "lerna run start",
+    "train": "lerna run train",
+    "test": "lerna run test",
+    "lint": "lerna run lint",
+    "build": "lerna run build"
   },
   "keywords": [],
   "author": "John Beech",
   "license": "ISC",
   "dependencies": {
-    "brain.js": "^2.0.0-beta.16"
   },
   "devDependencies": {
-    "standard": "^17.0.0"
+    "lerna": "^6.0.1"
   },
-  "standard": {
-    "ignore": [
-      "website/**/dist/"
-    ]
-  }
+  "workspaces": [
+    "trainer",
+    "website"
+  ]
 }

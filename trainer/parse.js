@@ -1,7 +1,11 @@
 import brain from 'brain.js'
 import fs from 'fs'
+import path from 'path'
+import { fileURLToPath } from 'url'
 
 import WordEncoder from './src/WordEncoder.js'
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
 async function createContext ({ steps }) {
   const netConfig = {
@@ -17,7 +21,8 @@ async function createContext ({ steps }) {
 }
 
 async function loadModelFromDisk () {
-  const preTrainedModel = JSON.parse(fs.readFileSync('./models/trained-model.json', 'utf8'))
+  const modelPath = path.join(__dirname, './models/trained-model.json')
+  const preTrainedModel = JSON.parse(fs.readFileSync(modelPath, 'utf8'))
   const { trainedNetwork, encoderDictionary } = preTrainedModel
   return { trainedNetwork, encoderDictionary }
 }

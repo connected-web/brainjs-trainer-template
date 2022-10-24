@@ -1,12 +1,12 @@
 {
-  "name": "brainjs-trainer-template-website",
+  "name": "brainjs-trainer-website",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
     "start": "npm run dev",
     "dev": "vite",
-    "build": "cp ../models/*.json public && vite build",
+    "build": "cp ../trainer/models/*.json public && vite build",
     "preview": "vite preview"
   },
   "dependencies": {

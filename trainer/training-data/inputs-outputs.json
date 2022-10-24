@@ -1,0 +1,227 @@
+[
+  {
+    "input": "red",
+    "output": {
+      "r": 1.0,
+      "g": 0.0,
+      "b": 0.0
+    }
+  }, {
+    "input": "bright red",
+    "output": {
+      "r": 1.0,
+      "g": 0.0,
+      "b": 0.0
+    }
+  }, {
+    "input": "bright green",
+    "output": {
+      "r": 0.0,
+      "g": 1.0,
+      "b": 0.0
+    }
+  }, {
+    "input": "lime green",
+    "output": {
+      "r": 0.0,
+      "g": 1.0,
+      "b": 0.0
+    }
+  }, {
+    "input": "lime",
+    "output": {
+      "r": 0.0,
+      "g": 1.0,
+      "b": 0.0
+    }
+  }, {
+    "input": "blue",
+    "output": {
+      "r": 0.0,
+      "g": 0.0,
+      "b": 1.0
+    }
+  }, {
+    "input": "orange",
+    "output": {
+      "r": 1.0,
+      "g": 0.8,
+      "b": 0.0
+    }
+  }, {
+    "input": "yellow",
+    "output": {
+      "r": 1.0,
+      "g": 1.0,
+      "b": 0.0
+    }
+  }, {
+    "input": "cyan",
+    "output": {
+      "r": 0.0,
+      "g": 1.0,
+      "b": 1.0
+    }
+  }, {
+    "input": "magenta",
+    "output": {
+      "r": 1.0,
+      "g": 0.0,
+      "b": 1.0
+    }
+  }, {
+    "input": "black",
+    "output": {
+      "r": 0.0,
+      "g": 0.0,
+      "b": 0.0
+    }
+  }, {
+    "input": "white",
+    "output": {
+      "r": 1.0,
+      "g": 1.0,
+      "b": 1.0
+    }
+  }, {
+    "input": "silver",
+    "output": {
+      "r": 0.75,
+      "g": 0.75,
+      "b": 0.75
+    }
+  }, {
+    "input": "gray",
+    "output": {
+      "r": 0.5,
+      "g": 0.5,
+      "b": 0.5
+    }
+  }, {
+    "input": "brown",
+    "output": {
+      "r": 0.65,
+      "g": 0.16,
+      "b": 0.16
+    }
+  }, {
+    "input": "tan",
+    "output": {
+      "r": 0.82,
+      "g": 0.71,
+      "b": 0.55
+    }
+  }, {
+    "input": "chocolate",
+    "output": {
+      "r": 0.82,
+      "g": 0.41,
+      "b": 0.12
+    }
+  }, {
+    "input": "light",
+    "output": {
+      "r": 0.8,
+      "g": 0.8,
+      "b": 0.8
+    }
+  }, {
+    "input": "dark",
+    "output": {
+      "r": 0.3,
+      "g": 0.3,
+      "b": 0.3
+    }
+  }, {
+    "input": "gray",
+    "output": {
+      "r": 0.5,
+      "g": 0.5,
+      "b": 0.5
+    }
+  }, {
+    "input": "maroon",
+    "output": {
+      "r": 0.5,
+      "g": 0.0,
+      "b": 0.0
+    }
+  }, {
+    "input": "olive",
+    "output": {
+      "r": 0.5,
+      "g": 0.5,
+      "b": 0.0
+    }
+  }, {
+    "input": "darkness",
+    "output": {
+      "r": 0.01,
+      "g": 0.01,
+      "b": 0.01
+    }
+  }, {
+    "input": "green",
+    "output": {
+      "r": 0.0,
+      "g": 0.5,
+      "b": 0.0
+    }
+  }, {
+    "input": "aqua",
+    "output": {
+      "r": 0.0,
+      "g": 1.0,
+      "b": 1.0
+    }
+  }, {
+    "input": "teal",
+    "output": {
+      "r": 0.0,
+      "g": 0.5,
+      "b": 0.5
+    }
+  }, {
+    "input": "navy",
+    "output": {
+      "r": 0.0,
+      "g": 0.0,
+      "b": 0.5
+    }
+  }, {
+    "input": "fuchsia",
+    "output": {
+      "r": 1.0,
+      "g": 0.0,
+      "b": 1.0
+    }
+  }, {
+    "input": "purple",
+    "output": {
+      "r": 0.5,
+      "g": 0.0,
+      "b": 0.5
+    }
+  }, {
+    "input": "medium violet red",
+    "output": {
+      "r": 0.78,
+      "g": 0.08,
+      "b": 0.52
+    }
+  }, {
+    "input": "salmon",
+    "output": {
+      "r": 0.98,
+      "g": 0.5,
+      "b": 0.45
+    }
+  }, {
+    "input": "lavender",
+    "output": {
+      "r": 0.9,
+      "g": 0.9,
+      "b": 0.98
+    }
+  }
+]
