@@ -1,4 +1,4 @@
-# User-Agent Brain Website
+# BrainJS Trainer Template Website
 
 This is a demo website for the brainjs-trainer-template model, which can be used to load a trained model and interactively play with the data through a web browser.
 

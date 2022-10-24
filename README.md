@@ -74,9 +74,9 @@ To test the network against existing dataset, run:
 npm run test
 ```
 
-To test a single user-agent, run:
+To test against a single input string, run:
 ```
-node parse "Mozilla/5.0 (Windows NT 6.1; Win64; x64; rv:47.0) Gecko/20100101 Firefox/47.0"
+node parse "red"
 ```
 
 ## Libraries

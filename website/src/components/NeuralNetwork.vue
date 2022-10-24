@@ -73,7 +73,7 @@ export default {
     this.trainedBrain = trainedBrain;
     this.encoder = encoder;
 
-    // Run the model with default user-agent
+    // Run the model with default user input
     this.runNeuralNework();
   },
   methods: {
