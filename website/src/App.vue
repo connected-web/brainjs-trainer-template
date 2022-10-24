@@ -22,7 +22,7 @@ export default {
       <BrainJSTile />
       <BrainJSTrainerTile />
     </div>
-    <Quickstart title="User-Agent Brain" />
+    <Quickstart title="BrainJS Trainer Template" />
     <input v-model="userInput" class="userAgentInput" />
     <NeuralNetwork :user-input="userInput" />
   </div>

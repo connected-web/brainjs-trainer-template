@@ -20,6 +20,8 @@
 import * as brain from "brain.js";
 import axios from "axios";
 
+import WordEncoder from '../../../src/WordEncoder.js'
+
 export default {
   props: {
     userInput: {
@@ -38,8 +40,8 @@ export default {
     color () {
       const { r, g, b } = this.outputs
       const red = Math.round(r * 255)
-      const green = Math.round(b * 255)
-      const blue = Math.round(g * 255)
+      const green = Math.round(g * 255)
+      const blue = Math.round(b * 255)
       return {
         red,
         green,
@@ -53,7 +55,7 @@ export default {
     // Load the model across the network
     this.state = "Loading trained model";
     const preTrainedModel = await axios.get("./trained-model.json");
-    const { trainedNetwork, dictionary } = preTrainedModel.data;
+    const { trainedNetwork, encoderDictionary } = preTrainedModel.data;
     this.state = "Loaded trained model";
 
     // Rehydrate the neural network
@@ -62,23 +64,30 @@ export default {
     trainedBrain.fromJSON(trainedNetwork);
     this.state = "Rehydrated network";
 
+    // Rehydrate the encoder
+    this.state = "Rehydrating encoder"
+    const encoder = new WordEncoder();
+    encoder.rehydrate(encoderDictionary);
+
     // Assign values back to vue model to display to user
     this.trainedBrain = trainedBrain;
+    this.encoder = encoder;
 
     // Run the model with default user-agent
     this.runNeuralNework();
   },
   methods: {
     runNeuralNework() {
-      const { trainedBrain } = this;
+      const { trainedBrain, encoder } = this;
 
       // Select an encode the user input
       const userInput = this.userInput;
 
       // Run the network against the encoded test input
-      this.state = "Parsing user-agent";
-      const outputs = trainedBrain.run(userInput);
-      this.state = "Parsed user-agent";
+      this.state = "Parsing user-input";
+      const encodedUserInput = encoder.encode(userInput)
+      const outputs = trainedBrain.run(encodedUserInput);
+      this.state = "Parsed user-input";
 
       // Select high-probabiliy values from the outputs
       console.log("Trained output:", { userInput, outputs });
