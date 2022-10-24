@@ -64,6 +64,12 @@ reify:webgpu slow install npm
 
 Just be patient...
 
+Then run:
+
+```
+npm run bootstrap
+```
+
 ## Training
 
 To train the network, run:
@@ -79,6 +85,20 @@ npm run test
 To test against a single input string, run:
 ```
 node trainer/parse "red"
+```
+
+## Local Website
+
+To build the local website, with the latest trained model, run:
+
+```
+npm run build
+```
+
+Followed by:
+
+```
+npm run start
 ```
 
 ## Libraries
