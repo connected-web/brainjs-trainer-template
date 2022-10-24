@@ -49,7 +49,7 @@ export default class WordEncoder {
     const existingChars = new Set(this.chars)
     wordChars.forEach(key => {
       if (existingChars.has(key)) {
-        encodedInputs[key] = 1.0
+        encodedInputs[key] = 0.5
       }
     })
 

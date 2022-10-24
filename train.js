@@ -55,10 +55,21 @@ async function saveTrainedModel ({ net }) {
 }
 
 async function testTrainedModel ({ net, encoder }) {
-  const testInput = 'red'
-  const encodedInput = encoder.encode(testInput)
-  const output = net.run(testInput)
-  console.log('Trained output:', { testInput, encodedInput, output })
+  function interpret (input) {
+    const encodedInput = encoder.encode(input)
+    const output = net.run(encodedInput)
+    console.log('Trained output:', { input, encodedInput, output })
+  }
+
+  interpret('red')
+  interpret('green')
+  interpret('yellow')
+  interpret('blue')
+  interpret('orange')
+  interpret('cyan')
+  interpret('white')
+  interpret('black')
+  interpret('ack')
 }
 
 const steps = {
