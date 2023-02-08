@@ -15,15 +15,15 @@ jobs:
       with:
         node-version: 18.x
 
-    - name: Use Python 3.8
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.8'
-
     - name: Use Python 2.7
       uses: actions/setup-python@v4
       with:
         python-version: '2.7'
+
+    - name: Use Python 3.8
+      uses: actions/setup-python@v4
+      with:
+        python-version: '3.8'
 
     - name: Install Brain.js Dependencies
       run: sudo apt-get install -y build-essential libxi-dev libglu1-mesa-dev libglew-dev pkg-config
