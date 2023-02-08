@@ -19,7 +19,7 @@ jobs:
       run: sudo apt-get install -y python2.7 build-essential libxi-dev libglu1-mesa-dev libglew-dev pkg-config
 
     - name: Install dependencies
-      run: npm install
+      run: npm ci
       working-directory: ./website/
 
     - name: Run build steps
