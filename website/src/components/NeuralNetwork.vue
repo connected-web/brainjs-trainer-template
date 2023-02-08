@@ -1,7 +1,10 @@
 <template>
   <div>
     <div class="left">
-      <div class="color-bar" :style="color.style">R: {{ color.red }}, G: {{ color.green }}, B: {{ color.blue }}</div>
+      <div class="color-bar" :style="color.style">
+        <label class="light">R: {{ color.red }}, G: {{ color.green }}, B: {{ color.blue }}</label>
+        <label class="dark">R: {{ color.red }}, G: {{ color.green }}, B: {{ color.blue }}</label>
+      </div>
       <h3>Outputs:</h3>
       <pre><code>{{ JSON.stringify(outputs, null, 2) }}</code></pre>
       <h3>Encoded User Input:</h3>
@@ -112,6 +115,16 @@ label {
   text-align: left;
 }
 .color-bar {
+  display: flex;
+  justify-content: space-between;
   padding: 0.5em;
+  border-radius: 4px;
+  font-weight: bold;
+}
+label.light {
+  color: black;
+}
+label.dark {
+  color: white;
 }
 </style>

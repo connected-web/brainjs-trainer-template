@@ -54,7 +54,7 @@ Prerequisites:
 
 Clone the project to your local machine, then from the project folder run:
 ```
-npm install
+npm ci
 ```
 
 The install might be quite slow at the point where it says:
